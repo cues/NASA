@@ -1,0 +1,45 @@
+.header{
+    height:70px;
+    width:100%;
+    background: rgba(0,0,0,.9);
+    box-shadow: 0 0 4px 0 rgba(23,23,23,.8);
+    justify-content: space-between;
+    padding:0 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top:0;
+    left:0
+}
+
+.logo,
+.search
+{
+    height: 100%;
+    width: 70px;
+    color:rgba(255,255,255,.8);
+    font-size: 40px;
+    cursor: default
+}
+.search
+{
+    width: auto
+}
+.logo img {
+    width: 80%;
+    height:66%;
+    margin: 17% 10%;
+}
+
+@media(max-width:768px){
+    .header
+    {
+        height:50px;
+        padding: 0 10px;
+    }
+    .logo,
+    .search
+    {
+        width: 50px;
+        font-size: 30px;
+    }
+}

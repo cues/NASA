@@ -1,0 +1,21 @@
+.DatePicker {
+    height: 100%;
+    font-size: 30px;
+    color:rgba(255,255,255,1);
+}
+
+.DatePicker input{
+    font-size: 28px;
+    text-align: center;
+    width: 250px;
+    height: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color:rgba(255,255,255,.9);
+    letter-spacing: 4px;
+    cursor: pointer;
+    font-family: 'Bitter';
+}
+
+
