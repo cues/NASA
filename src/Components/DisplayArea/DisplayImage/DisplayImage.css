@@ -3,10 +3,12 @@
     height:auto;
     box-sizing: border-box;
     width:100%;
-    margin: 15px 0;
+    margin: 10px 0;
+    position: relative;
+    float: left;
 }
 
-.displayImage
+.displayImage_alt
 {
     background: rgba(102,102,102,.3)s;
     height:300px;

@@ -7,10 +7,10 @@ import classes from '../../../index.css';
 const displayImage = (props) => {
     // const image = props.displayImage;
     
-    let imageClass = [cls.displayImage, cls.displayImage_alt, classes.display_flex];
-    let inner_image = [cls.displayImage_inner, classes.none]
+    let imageClass = [classes.none];
+    let inner_image = [classes.none]
     if(props.show){
-      imageClass = [cls.displayImagex, classes.display_flex]
+      imageClass = [cls.displayImage, classes.display_flex]
       inner_image = [cls.displayImage_inner]
     }
 

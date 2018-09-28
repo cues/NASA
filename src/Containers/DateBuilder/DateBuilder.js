@@ -5,6 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import cls from './DateBuilder.css';
 
 
+
+
 class DateBuilder extends Component {
 
     constructor (props) {
@@ -15,15 +17,31 @@ class DateBuilder extends Component {
         this.handleChange = this.handleChange.bind(this);
       }
 
+    //   data:{
 
+    // }
+        // onathang = (date) => {
+
+        //     this.state.data[date] ? return this.state.data[date] 
+            
+        //     const resp = fetch(date)
+        //     this.setState({
+        //         data: {
+        //             ...this.state.data,
+        //             [date]: resp
+        //         }
+        //     })
+        // }
 
 
 
     handleChange(date) {
-        // const newDay = moment(date).format('YYYY-MM-DD');
+        const newDay = moment(date).format('YYYY-MM-DD');
         this.setState({
           startDate: date
         });
+        this.props.date(newDay);
+        this.props.clicked();
       }
 
 

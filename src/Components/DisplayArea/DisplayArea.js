@@ -1,63 +1,44 @@
-import React , { Component }  from 'react';
-import cls from './DisplayArea.css';
+import React  from 'react';
 import DisplayDate from './DisplayDate/DisplayDate';
 import DisplayTitle from './DisplayTitle/DisplayTitle';
 import DisplayContent from './DisplayContent/DisplayContent';
 import DisplayImage from './DisplayImage/DisplayImage';
-import axios from 'axios';
-import moment from 'moment';
-import image from '../../Assets/Images/nasa_logo.png'
+import styled from 'styled-components';
 
-
-
-class DisplayArea extends Component {
-    state = {
-        displayDate : null,
-        displayTitle : null,
-        displayContent : null,
-        displayImage : {image},
-
-        show : false
+const DisplayArea = styled.div`
+    height: auto;
+    width: 100%;
+    max-width: 800px;
+    margin: 70px 0 40px;
+    margin-left: calc(50vw - 400px);
+    background:rgba(102,102,102,.2);
+    box-shadow: 0 0 4px 0 rgba(23,23,23,.4);
+    box-sizing: border-box;
+    padding: 10px 0;
+    position: relative;
+    float: left;
+    @media(max-width:800px){
+            margin-left: 0
     }
-
-
-
-    componentDidMount(){
-        axios.get('https://api.nasa.gov/planetary/apod?api_key=7Ev1ZGT3SQPD6oOZ33NAeCjAWjQtAw72j90f8Am7')
-        .then(response => {
-            console.log(response);
-            let date = response.data.date
-            date = moment(date).format('Do MMMM YYYY')
-            this.setState({displayDate : date})
-            this.setState({displayTitle : response.data.title})
-            this.setState({displayContent : response.data.explanation})
-            this.setState({displayImage : response.data.hdurl})
-
-            response.data.hdurl !== null ? this.setState({show : true}) : this.setState({show : false}) 
-
-        })
+    @media(max-width:768px){
+            margin: 50px 0 30px;
     }
-    
-
-    
+`
 
 
-    render(){
+ const displayArea = (props) =>(
 
-        return(
-                <div className={cls.DisplayArea}>
-                        <DisplayDate displayDate={this.state.displayDate}/>
-                        <DisplayTitle displayTitle={this.state.displayTitle}/>
-                        <DisplayImage displayImage={this.state.displayImage} show={this.state.show}/>
-                        <DisplayContent displayContent={this.state.displayContent}/>
-                </div>
-            )
-    }
-   
-}
+    <DisplayArea>
+        <DisplayDate displayDate={props.date}/>
+        <DisplayTitle displayTitle={props.title}/>
+        <DisplayImage displayImage={props.image} show={props.show}/>
+        <DisplayContent displayContent={props.content}/>
+    </DisplayArea>
 
-        
+ )
+
 
     
+    
 
-export default DisplayArea;
+export default displayArea;

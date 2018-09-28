@@ -1,6 +1,6 @@
 .sideDrawer{
-    height:100vh;
-    width:280px;
+    height: 100px;
+    width: 100%;
     background: rgba(0,0,0,.9);
     box-shadow: -3px 3px 4px 0 rgba(23,23,23,.8);
     position: fixed;;
@@ -20,9 +20,17 @@
 
 
 .Open {
-    transform : translateX(0)
+    transform : translateY(0)
 }
 
 .Close {
-    transform : translateX(110%)
+    transform : translateY(-120px)
+}
+
+
+
+
+.search{
+    width:100%;
+    height:100%;
 }

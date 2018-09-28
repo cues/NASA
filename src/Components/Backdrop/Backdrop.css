@@ -30,3 +30,8 @@
 .Backdrop_inner_close{
     opacity: 0;
 }
+@media(min-width:769px){
+    .Backdrop{
+        display: none
+    }
+}

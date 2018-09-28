@@ -24,8 +24,8 @@ class Layout extends Component {
 
         return(
             <Rapper> 
-                <SideDrawer show={showBackdrop} clicked={this.closeBackdropHandler}/>
-                <Header clicked={this.openBackdropHandler} />
+                <SideDrawer show={showBackdrop} clicked={this.closeBackdropHandler} date={this.props.date}/>
+                <Header clicked={this.openBackdropHandler} date={this.props.date} />
                 <main>{child}</main>
                 <Footer/>
             </Rapper>
