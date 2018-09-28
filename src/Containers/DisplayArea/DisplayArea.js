@@ -7,7 +7,7 @@ class DisplayArea extends Component {
     render(){
         return(
             <div className={cls.DisplayArea}>
-                jasdb f sdkfjs adk fklskdf bksjd bfskjdbfshf bs ads asdfsfd s
+                thanks of the time
             </div>
         )
     }
