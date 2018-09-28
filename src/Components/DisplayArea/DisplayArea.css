@@ -1,5 +1,5 @@
 .DisplayArea{
-    height: calc(100vh - 110px);
+    height: auto;
     width: 100%;
     max-width: 800px;
     margin: 70px 0 40px;
@@ -7,10 +7,7 @@
     background:rgba(102,102,102,.3);
     box-shadow: 0 0 4px 0 rgba(23,23,23,.6);
     box-sizing: border-box;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column
+    padding: 10px 0;
 }
 @media(max-width:800px){
     .DisplayArea{
@@ -19,7 +16,6 @@
 }
 @media(max-width:768px){
     .DisplayArea{
-        height: calc(100vh - 80px);
         margin: 50px 0 30px;
     }
 }

@@ -1,0 +1,22 @@
+.displayImage
+{
+    height:auto;
+    box-sizing: border-box;
+    width:100%;
+    margin: 15px 0;
+}
+
+.displayImage
+{
+    background: rgba(102,102,102,.3)s;
+    height:300px;
+    width:300px;
+}
+
+.displayImage_inner{
+    height:auto;
+    max-height: 400px;
+    width:auto;
+    max-width: 100%;
+    border-radius: 5px;
+}

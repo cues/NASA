@@ -3,7 +3,6 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import cls from './DatePicker.css';
-import axios from 'axios';
 
 
 class DateBuilder extends Component {
@@ -17,12 +16,7 @@ class DateBuilder extends Component {
       }
 
 
-      componentDidMount(){
-            axios.get('https://api.nasa.gov/planetary/apod?api_key=Ss9IZ3QMGLRhNHh79ClEvEBtO5FazBst0ujSgNO3')
-                .then(response => {
-                    console.log(response);
-                })
-        }
+    
 
 
 
