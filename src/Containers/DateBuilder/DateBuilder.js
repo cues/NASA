@@ -17,22 +17,8 @@ class DateBuilder extends Component {
         this.handleChange = this.handleChange.bind(this);
       }
 
-    //   data:{
-
-    // }
-        // onathang = (date) => {
-
-        //     this.state.data[date] ? return this.state.data[date] 
-            
-        //     const resp = fetch(date)
-        //     this.setState({
-        //         data: {
-        //             ...this.state.data,
-        //             [date]: resp
-        //         }
-        //     })
-        // }
-
+ 
+    doNothing = () => {}
 
 
     handleChange(date) {
@@ -41,8 +27,8 @@ class DateBuilder extends Component {
           startDate: date
         });
         this.props.date(newDay);
-        this.props.clicked();
-      }
+        this.props.show ? this.props.clicked() : this.doNothing()
+     }
 
 
 

@@ -16,7 +16,7 @@ const sideDrawer = (props) => {
             <Backdrop show={props.show} clicked={props.clicked}/>   
             <div className={newClass.join(' ')}>    
                 <div className={[cls.search, classes.display_flex, classes.cursor_pointer, 'material-icons'].join(' ')}>
-                <DateBuilder date={props.date} clicked={props.clicked}/>
+                <DateBuilder date={props.date} clicked={props.clicked} show={props.show}/> 
                 </div>
             </div>
         </Rapper>

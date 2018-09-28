@@ -7,6 +7,7 @@ import moment from 'moment';
 
 class App extends Component {
   state = {
+    dates:{ },
     date : {
       displayDate : null,
         displayTitle : null,
@@ -30,7 +31,10 @@ class App extends Component {
 
   getDate = (date) => {
     console.log(date);
-    this.fetchAstronomy(date); 
+    this.fetchAstronomy(date)
+    setTimeout(() => 
+      console.log(this.state.dates)
+    ,1000)
   }
 
 
@@ -38,6 +42,12 @@ class App extends Component {
     axios.get('https://api.nasa.gov/planetary/apod?api_key=7Ev1ZGT3SQPD6oOZ33NAeCjAWjQtAw72j90f8Am7&date='+date+'')
     .then(response => {
         console.log(response);
+        this.setState({
+          dates: {
+              ...this.state.dates,
+              date : response
+          }
+        })
         let date = response.data.date
         date = moment(date).format('Do MMMM YYYY')
         this.setState({displayDate : date})
