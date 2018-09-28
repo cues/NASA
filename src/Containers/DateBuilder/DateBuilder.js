@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-import cls from './DatePicker.css';
+import cls from './DateBuilder.css';
 
 
 class DateBuilder extends Component {
@@ -15,8 +15,6 @@ class DateBuilder extends Component {
         this.handleChange = this.handleChange.bind(this);
       }
 
-
-    
 
 
 

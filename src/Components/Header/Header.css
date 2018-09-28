@@ -12,7 +12,8 @@
 }
 
 .logo,
-.search
+.search,
+.menu
 {
     height: 100%;
     width: 70px;
@@ -22,6 +23,10 @@
 .search
 {
     width: auto
+}
+.menu
+{
+    display: none
 }
 .logo img {
     width: 80%;
@@ -39,5 +44,13 @@
     {
         width: 50px;
         font-size: 30px;
+    }
+    .menu
+    {
+        display: flex;
+        font-size: 30px;
+    }
+    .search{
+        display: none
     }
 }

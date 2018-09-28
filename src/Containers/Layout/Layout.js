@@ -2,8 +2,7 @@ import  React , { Component } from 'react';
 import Rapper from '../../hoc/rapper';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import Backdrop from '../../Components/Backdrop/Backdrop'
-
+import SideDrawer from '../../Components/SideDrawer/SideDrawer'
 
 class Layout extends Component {
     state = {
@@ -24,8 +23,8 @@ class Layout extends Component {
         const {showBackdrop} = this.state;
 
         return(
-            <Rapper>
-                <Backdrop show={showBackdrop} clicked={this.closeBackdropHandler}/>   
+            <Rapper> 
+                <SideDrawer show={showBackdrop} clicked={this.closeBackdropHandler}/>
                 <Header clicked={this.openBackdropHandler} />
                 <main>{child}</main>
                 <Footer/>
