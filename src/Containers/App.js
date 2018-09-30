@@ -6,56 +6,65 @@ import moment from 'moment';
 
 
 class App extends Component {
-  state = {
-    dates:{ },
-    date : {
-      displayDate : null,
-        displayTitle : null,
-        displayContent : null,
-        displayImage : null,
-    },
-    show: false,
+  constructor(props){
+    super(props);
+
+    const date = moment(); 
+    const newDate = date.format('YYYY-MM-DD')
+
+    // this.setState({selectedDate:newDate})
+
+    this.state = {
+      dates:{ },
+      selectedDate:newDate,
+      show: false,
+    }
   }
 
 
   componentDidMount(){
-    const date = moment(); 
-    const year  = date.format('YYYY');
-    const month = date.format('M');
-    const day = date.format('D');
-    console.log(year,'-',month,'-',day);
-    const newDate = year+'-'+month+'-'+day; 
-    this.fetchAstronomy(newDate); 
+    this.fetchAstronomy(this.state.selectedDate); 
+    setTimeout(() => 
+      console.log(this.state.dates)
+    ,2000)
   }
 
 
   getDate = (date) => {
-    console.log(date);
-    this.fetchAstronomy(date)
+
+    this.setState({selectedDate:date})
+
+    if(!this.state.dates[date]){
+      this.fetchAstronomy(date)
+    }
+
     setTimeout(() => 
       console.log(this.state.dates)
-    ,1000)
+    ,2000)
   }
 
 
   fetchAstronomy = (date) => {
+    
     axios.get('https://api.nasa.gov/planetary/apod?api_key=7Ev1ZGT3SQPD6oOZ33NAeCjAWjQtAw72j90f8Am7&date='+date+'')
     .then(response => {
         console.log(response);
+ 
+        let date_display = response.data.date
+        date_display = moment(date_display).format('Do MMMM YYYY')
+       
         this.setState({
           dates: {
               ...this.state.dates,
-              date : response
+              [date] : {
+                displayDate : date_display,
+                displayTitle : response.data.title,
+                displayContent : response.data.explanation,
+                displayImage : response.data.hdurl
+              }
           }
         })
-        let date = response.data.date
-        date = moment(date).format('Do MMMM YYYY')
-        this.setState({displayDate : date})
-        this.setState({displayTitle : response.data.title})
-        this.setState({displayContent : response.data.explanation})
-        this.setState({displayImage : response.data.hdurl})
 
-        // response.data.hdurl !== undefined ? alert(response.data.hdurl) : alert('null')
         response.data.hdurl !== undefined ? this.setState({show : true}) : this.setState({show : false}) 
 
     })
@@ -63,19 +72,25 @@ class App extends Component {
 
 
 
-  render() {
-    return (
-      <Layout date={this.getDate}>
-        <DisplayArea 
-            date = {this.state.displayDate}
-            title = {this.state.displayTitle}
-            image = {this.state.displayImage}
-            content = {this.state.displayContent}
-            show = {this.state.show}
-        />
-      </Layout>
-    );
-  }
+
+
+      render() {
+
+                const {selectedDate , dates} = this.state;
+                
+
+                return (
+                  <Layout date={this.getDate}>
+                    <DisplayArea 
+                        date = {dates[selectedDate] && dates[selectedDate].displayDate}
+                        title = { dates[selectedDate] &&  dates[selectedDate].displayTitle}
+                        image = { dates[selectedDate] &&  dates[selectedDate].displayImage}
+                        content = { dates[selectedDate] &&  dates[selectedDate].displayContent}
+                        show = {this.state.show}
+                    />
+                  </Layout>
+                );
+              }
 }
 
 export default App;
