@@ -7,20 +7,27 @@ import classes from '../../../index.css';
 const displayImage = (props) => {
     // const image = props.displayImage;
     
-    let imageClass = [classes.none];
-    let inner_image = [classes.none]
-    if(props.show){
-      imageClass = [cls.displayImage, classes.display_flex]
-      inner_image = [cls.displayImage_inner]
+    let image = "";
+
+    if(props.displayImage){
+        let imageClass = [classes.none];
+        let inner_image = [classes.none]
+        
+        if(props.show){
+          imageClass = [cls.displayImage, classes.display_flex]
+          inner_image = [cls.displayImage_inner]
+        }
+    
+         image =  (<div className={imageClass.join(' ')}>
+                        <img src={props.displayImage}
+                                className={inner_image.join(' ')} 
+                                alt="Display_Image"/>
+                        </div>);
     }
 
-    return(
-            <div className={imageClass.join(' ')}>
-                    <img src={props.displayImage}
-                            className={inner_image.join(' ')} 
-                            alt="Display_Image"/>
-            </div>
-        )
+
+    return image
+  
 }
    
    

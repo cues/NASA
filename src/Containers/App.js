@@ -18,11 +18,13 @@ class App extends Component {
       dates:{ },
       selectedDate:newDate,
       show: false,
+      response :false,
     }
   }
 
 
   componentDidMount(){
+    this.setState({response : true})
     this.fetchAstronomy(this.state.selectedDate); 
     setTimeout(() => 
       console.log(this.state.dates)
@@ -31,8 +33,10 @@ class App extends Component {
 
 
   getDate = (date) => {
+    // console.log(this.newDate)
 
     this.setState({selectedDate:date})
+    this.setState({response : true})
 
     if(!this.state.dates[date]){
       this.fetchAstronomy(date)
@@ -49,7 +53,7 @@ class App extends Component {
     axios.get('https://api.nasa.gov/planetary/apod?api_key=7Ev1ZGT3SQPD6oOZ33NAeCjAWjQtAw72j90f8Am7&date='+date+'')
     .then(response => {
         console.log(response);
- 
+      
         let date_display = response.data.date
         date_display = moment(date_display).format('Do MMMM YYYY')
        
@@ -65,8 +69,14 @@ class App extends Component {
           }
         })
 
+        // console.log(response.data.hdurl);
+
         response.data.hdurl !== undefined ? this.setState({show : true}) : this.setState({show : false}) 
 
+    })
+    .catch(error => {
+      console.log(error)
+      this.setState({response :false})
     })
   }
 
@@ -76,7 +86,8 @@ class App extends Component {
 
       render() {
 
-                const {selectedDate , dates} = this.state;
+                const {selectedDate , dates, show, response} = this.state;
+                
                 
 
                 return (
@@ -86,7 +97,8 @@ class App extends Component {
                         title = { dates[selectedDate] &&  dates[selectedDate].displayTitle}
                         image = { dates[selectedDate] &&  dates[selectedDate].displayImage}
                         content = { dates[selectedDate] &&  dates[selectedDate].displayContent}
-                        show = {this.state.show}
+                        show = {show}
+                        response = {response}
                     />
                   </Layout>
                 );

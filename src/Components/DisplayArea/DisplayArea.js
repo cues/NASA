@@ -26,16 +26,29 @@ const DisplayArea = styled.div`
 `
 
 
- const displayArea = (props) =>(
+ const displayArea = (props) =>{
+    // props.response ? alert('ok') : alert('not')
 
-    <DisplayArea>
-        <DisplayDate displayDate={props.date}/>
-        <DisplayTitle displayTitle={props.title}/>
-        <DisplayImage displayImage={props.image} show={props.show}/>
-        <DisplayContent displayContent={props.content}/>
-    </DisplayArea>
+     let display = ( 
+                     <DisplayArea>
+                         <DisplayDate displayDate='Nothing to show'/>
+                      </DisplayArea>
+                );
+     if(props.response){
+         display = (
+            <DisplayArea>
+                <DisplayDate displayDate={props.date}/>
+                <DisplayTitle displayTitle={props.title}/>
+                <DisplayImage displayImage={props.image} show={props.show}/>
+                <DisplayContent displayContent={props.content}/>
+            </DisplayArea>
+         )
+     }
+     return display;
+ }
 
- )
+
+  
 
 
     
